@@ -38,11 +38,6 @@ Follow these steps to deploy and interact with the smart contract:
 - Solidity Compiler (v0.8.0 or compatible)
 - Ethereum Wallet or Development Environment
 
-## Usage Example
-
-```solidity
-// Deploy the contract and interact with its functions
-
 ## Contributing
 
 Contributions to enhance and extend the example are welcome. Please fork the repository and submit a pull request.
