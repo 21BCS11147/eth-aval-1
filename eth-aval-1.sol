@@ -1,23 +1,23 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-contract SmartContract {
-    function processNumbers(uint256 num1, uint256 num2) public pure returns (uint256) {
-        // Using require()
-        require(num1 != 0, "Number 1 should not be zero");
-        require(num2 != 0, "Number 2 should not be zero");
+contract MathOperations {
+    function safeAdd(uint256 a, uint256 b) external pure returns (uint256) {
+        require(a + b >= a, "Addition overflow");
+        return a + b;
+    }
 
-        // Using assert()
-        uint256 sum = num1 + num2;
-        assert(sum >= num1 && sum >= num2);
+    function safeSub(uint256 a, uint256 b) external pure returns (uint256) {
+        require(a >= b, "Subtraction underflow");
+        return a - b;
+    }
 
-        // Using revert()
-        if (num1 > num2) {
-            revert("Number 1 should be smaller than or equal to Number 2");
-        }
+    function assertExample(uint256 a, uint256 b) external pure returns (uint256) {
+        assert(a != b);
+        return a + b;
+    }
 
-        // Perform some other operations if needed
-
-        return sum;
+    function revertExample() external pure {
+        revert("This function always reverts");
     }
 }
