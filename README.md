@@ -1,48 +1,39 @@
-# eth-aval-1
-ethereum module avalanche 1
+# UpdatedErrorHandling Smart Contract
 
-# Smart Contract Example: Functionality with require(), assert(), and revert()
+This Solidity smart contract demonstrates the use of require(), assert(), and revert() statements for error handling. The contract manages user balances and provides methods to deposit and withdraw funds based on various conditions.
 
-This repository contains a Solidity smart contract that serves as an example to demonstrate the usage of `require()`, `assert()`, and `revert()` functions in Ethereum smart contracts.
+## Requirements
 
-## Contract Overview
+- Solidity version: 0.8.0 or compatible
 
-The `ContractWithFunctions` smart contract showcases three fundamental functionalities for writing secure and robust Ethereum smart contracts: 
+## Features
 
-1. **require():** Used to enforce conditions that must be met for a function to proceed. The contract's `setValue` function uses `require()` to ensure the new value being set is greater than the current value.
+1. `deposit(uint _amount)`: Allows users to deposit funds into their account.
 
-2. **assert():** Utilized to verify internal consistency within the contract's logic. The `assertExample` function confirms that the denominator is not zero before performing a division operation.
+2. `withdrawRequire(uint _amount)`: Enables users to withdraw funds with a requirement that their address matches the `expectedAddress` and the withdrawal amount does not exceed their balance.
 
-3. **revert():** Employed to handle exceptional cases or invalid inputs. The `revertExample` function utilizes a `revert()` statement to halt function execution if the provided amount exceeds the current value.
+3. `withdrawAssert(uint _amount)`: Similar to `withdrawRequire`, but uses `assert` statements for validation.
+
+4. `withdrawRevert(uint _amount)`: Similar to `withdrawRequire`, but uses `revert` statements for validation.
+
+5. `setExpectedAddress(address _newExpectedAddress)`: Allows the contract owner to update the `expectedAddress`.
 
 ## Getting Started
 
-Follow these steps to deploy and interact with the smart contract:
+1. Clone this repository.
 
-1. **Compile the Smart Contract:**
+2. Make sure you have Solidity compiler (0.8.0 or compatible) installed.
 
-   Compile the smart contract using your preferred Solidity compiler (e.g., Remix, Truffle, solc).
+3. Compile the smart contract using the Solidity compiler.
 
-2. **Deploy the Smart Contract:**
+4. Deploy the contract on an Ethereum-compatible network using your preferred development environment (e.g., Remix, Truffle, Hardhat).
 
-   Deploy the compiled contract to an Ethereum-compatible blockchain network. You can use tools like Remix, Truffle, or deploy through a development framework.
+## Usage
 
-3. **Interact with the Contract:**
+- Deploy the contract and set the `expectedAddress` to the desired address.
 
-   - Use the `setValue` function by sending a transaction from the contract owner's address to set a new value.
-   - Call the `assertExample` function by sending a read-only transaction to perform a division operation.
-   - Call the `revertExample` function to test the revert functionality by sending a read-only transaction with an amount.
-
-## Prerequisites
-
-- Solidity Compiler (v0.8.0 or compatible)
-- Ethereum Wallet or Development Environment
-
-## Contributing
-
-Contributions to enhance and extend the example are welcome. Please fork the repository and submit a pull request.
+- Interact with the contract using a wallet or a contract interaction tool.
 
 ## License
 
-This smart contract example is provided under the MIT License. Feel free to modify and use it in your projects.
-
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
