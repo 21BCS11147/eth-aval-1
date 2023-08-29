@@ -1,23 +1,38 @@
-// SPDX-License-Identifier: MIT
+/ SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
-contract MathOperations {
-    function safeAdd(uint256 a, uint256 b) external pure returns (uint256) {
-        require(a + b >= a, "Addition overflow");
-        return a + b;
-    }
+contract UpdatedErrorHandling {
 
-    function safeSub(uint256 a, uint256 b) external pure returns (uint256) {
-        require(a >= b, "Subtraction underflow");
-        return a - b;
-    }
+  mapping(address => uint) public balances;
+  address public expectedAddress = 0x5B38Da6a701c568545dCfcB03FcB875f56beddC4;
 
-    function assertExample(uint256 a, uint256 b) external pure returns (uint256) {
-        assert(a != b);
-        return a + b;
-    }
+  function deposit(uint _amount) public {
+    balances[msg.sender] += _amount;
+  }
 
-    function revertExample() external pure {
-        revert("This function always reverts");
+  function withdrawRequire(uint _amount) public {
+    require(msg.sender == expectedAddress, "Unauthorized address");
+    require(balances[msg.sender] >= _amount, "Insufficient balance");
+    balances[msg.sender] -= _amount;
+  }
+
+  function withdrawAssert(uint _amount) public {
+    assert(msg.sender == expectedAddress);
+    assert(balances[msg.sender] >= _amount);
+    balances[msg.sender] -= _amount;
+  }
+
+  function withdrawRevert(uint _amount) public {
+    if (msg.sender != expectedAddress) {
+      revert("Unauthorized address");
     }
+    if (balances[msg.sender] < _amount) {
+      revert("Insufficient balance");
+    }
+    balances[msg.sender] -= _amount;
+  }
+
+  function setExpectedAddress(address _newExpectedAddress) public {
+    expectedAddress = _newExpectedAddress;
+  }
 }
