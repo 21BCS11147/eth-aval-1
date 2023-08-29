@@ -1,4 +1,4 @@
-# UpdatedErrorHandling Smart Contract
+# ErrorHandling Smart Contract
 
 This Solidity smart contract demonstrates the use of require(), assert(), and revert() statements for error handling. The contract manages user balances and provides methods to deposit and withdraw funds based on various conditions.
 
@@ -36,4 +36,4 @@ This Solidity smart contract demonstrates the use of require(), assert(), and re
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License. See the [LICENSE](https://github.com/21BCS11147/eth-aval-1/tree/main) file for details.
